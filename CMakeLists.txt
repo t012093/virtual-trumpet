@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(VirtualTrumpet VERSION 0.1.0 LANGUAGES CXX)
+project(VirtualTrumpet VERSION 0.1.0 LANGUAGES C CXX OBJC OBJCXX)
 
 # C++20 standard
 set(CMAKE_CXX_STANDARD 20)
@@ -43,6 +43,7 @@ target_link_libraries(VirtualTrumpet_Core
 # ==============================================================================
 juce_add_plugin(VirtualTrumpet
     COMPANY_NAME "Personal"
+    PLUGIN_MANUFACTURER "Personal"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
@@ -51,8 +52,9 @@ juce_add_plugin(VirtualTrumpet
     COPY_PLUGIN_AFTER_BUILD TRUE
     PLUGIN_NAME "VirtualTrumpet"
     PLUGIN_DESC "Physical Modeling Trumpet Synthesizer"
-    PLUGIN_MANUFACTURER_CODE 'Prsn'
-    PLUGIN_CODE 'VTrp'
+    PLUGIN_MANUFACTURER_CODE "Prsn"
+    PLUGIN_CODE "VTrp"
+    VST3_REPLACES_VST2 FALSE
     FORMATS AU VST3 Standalone
 )
 
@@ -67,6 +69,11 @@ target_link_libraries(VirtualTrumpet
     PRIVATE
         VirtualTrumpet_Core
         juce::juce_audio_utils
+)
+
+target_compile_definitions(VirtualTrumpet
+    PRIVATE
+        JUCE_VST3_CAN_REPLACE_VST2=0
 )
 
 # JUCE standard plugin definitions (e.g. JUCE_SHARED_CODE)
