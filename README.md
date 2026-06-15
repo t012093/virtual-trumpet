@@ -26,6 +26,7 @@ GarageBand、Logic Pro、Ableton Liveなどで利用できるAU/VST3プラグイ
 9. [推奨ディレクトリ構造](09_repository_structure.md)
 10. [主要な設計判断](10_architecture_decisions.md)
 11. [参考資料と未決事項](11_references_and_open_questions.md)
+12. [UIアーキテクチャ](12_ui_architecture.md)
 
 ## MVPの完成条件
 
